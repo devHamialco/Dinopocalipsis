@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://bjeeoefhbmyi7"]
+
+[ext_resource type="Texture2D" uid="uid://dr0luh6ilvr4r" path="res://Images/text.png" id="1_rq08a"]
+[ext_resource type="Script" uid="uid://cqj1h42c0niyp" path="res://Scripts/instrucciones.gd" id="1_tlyv2"]
+[ext_resource type="Texture2D" uid="uid://cyfgkkusi7n4y" path="res://Images/wooden-gold-buttons-ui-game.png" id="2_tlyv2"]
+[ext_resource type="Texture2D" uid="uid://o1gf27cm057q" path="res://Images/titulo.png" id="3_kqh0u"]
+[ext_resource type="AudioStream" uid="uid://bmim70pp6ogqj" path="res://Music/click.wav" id="5_uv4c7"]
+[ext_resource type="AudioStream" uid="uid://b4mtrfrbpjiv1" path="res://Music/hover.wav" id="6_y1r5s"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uv4c7"]
+texture = ExtResource("2_tlyv2")
+expand_margin_top = 3.0
+expand_margin_bottom = 13.0
+region_rect = Rect2(756, 910, 545, 200)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tlyv2"]
+texture = ExtResource("2_tlyv2")
+expand_margin_top = 3.0
+expand_margin_bottom = 13.0
+region_rect = Rect2(98, 910, 618, 200)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y1r5s"]
+texture = ExtResource("3_kqh0u")
+
+[sub_resource type="FontVariation" id="FontVariation_wnck8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ld4yd"]
+texture = ExtResource("2_tlyv2")
+region_rect = Rect2(956, 135, 946, 698)
+
+[node name="Instrucciones" type="Control" unique_id=370524484]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tlyv2")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=606487370]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_rq08a")
+expand_mode = 1
+
+[node name="Regresar" type="Button" parent="." unique_id=464299434]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = 212.0
+offset_right = 148.0
+offset_bottom = 289.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxTexture_uv4c7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_tlyv2")
+text = "Regresar"
+
+[node name="Label" type="Label" parent="." unique_id=230578991]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -166.0
+offset_top = 29.0
+offset_right = 193.0
+offset_bottom = 111.0
+grow_horizontal = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_y1r5s")
+
+[node name="Label2" type="Label" parent="." unique_id=43723183]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -207.0
+offset_right = 404.0
+offset_bottom = 202.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = SubResource("FontVariation_wnck8")
+theme_override_font_sizes/font_size = 37
+theme_override_styles/normal = SubResource("StyleBoxTexture_ld4yd")
+text = "Usando las flechas del teclado para
+moverte evita los cactús y dinosaurios
+mientras consigues corazones para sobrevivir el apocalipsis ocasionado
+ por el meteorito."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="click" type="AudioStreamPlayer" parent="." unique_id=1771122164]
+stream = ExtResource("5_uv4c7")
+
+[node name="hover" type="AudioStreamPlayer" parent="." unique_id=593492243]
+stream = ExtResource("6_y1r5s")
+volume_db = -20.0
+
+[connection signal="pressed" from="Regresar" to="." method="_on_regresar_pressed"]

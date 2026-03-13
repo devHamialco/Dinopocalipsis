@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bx2g5y1m0ewqf"]
+
+[ext_resource type="PackedScene" uid="uid://b1tf741vncphq" path="res://Recursos/Pterablocktyls.glb" id="1_ptera"]
+[ext_resource type="Script" uid="uid://cs3soaeglu6x0" path="res://Scripts/enemigo.gd" id="2_script"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_24lda"]
+radius = 0.6142578
+height = 6.7125244
+
+[node name="Enemigo" type="CharacterBody3D" unique_id=2088570169]
+script = ExtResource("2_script")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=433922721]
+
+[node name="Pterablocktyls" parent="." unique_id=159338459 instance=ExtResource("1_ptera")]
+
+[node name="Timer" type="Timer" parent="." unique_id=1090132454]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1009005734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.41436768, -1.0979595)
+shape = SubResource("CapsuleShape3D_24lda")

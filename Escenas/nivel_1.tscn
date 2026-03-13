@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bscffrv7wy4l8"]
+
+[ext_resource type="PackedScene" uid="uid://cxfdk60uka0sb" path="res://Escenas/escenario.tscn" id="1_os1ql"]
+[ext_resource type="PackedScene" uid="uid://cfl58ocq7o82v" path="res://Escenas/player.tscn" id="2_3c2k2"]
+[ext_resource type="PackedScene" uid="uid://bx2g5y1m0ewqf" path="res://Escenas/enemigo.tscn" id="3_lswwr"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_navmesh"]
+
+[node name="Nivel1" type="Node3D" unique_id=1615146761]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1535080965]
+navigation_mesh = SubResource("NavigationMesh_navmesh")
+
+[node name="Escenario" parent="NavigationRegion3D" unique_id=1410321552 instance=ExtResource("1_os1ql")]
+
+[node name="Player" parent="." unique_id=847262142 instance=ExtResource("2_3c2k2")]
+transform = Transform3D(-0.09997836, 0, 0.0020802817, 0, 0.1, 0, -0.0020802817, 0, -0.09997836, -2.1302109, 0.49386454, -3.8120098)
+
+[node name="Enemigo" parent="." unique_id=1813384712 instance=ExtResource("3_lswwr")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5712953, 3.5081086, 15.594103)
