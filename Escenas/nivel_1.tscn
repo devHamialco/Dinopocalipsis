@@ -14,7 +14,7 @@ navigation_mesh = SubResource("NavigationMesh_navmesh")
 [node name="Escenario" parent="NavigationRegion3D" unique_id=1410321552 instance=ExtResource("1_os1ql")]
 
 [node name="Player" parent="." unique_id=847262142 instance=ExtResource("2_3c2k2")]
-transform = Transform3D(-0.09997836, 0, 0.0020802817, 0, 0.1, 0, -0.0020802817, 0, -0.09997836, -2.1302109, 0.49386454, -3.8120098)
+transform = Transform3D(0.077503294, 0, 0.06319211, 0, 0.1, 0, -0.06319211, 0, 0.077503294, 36.0636, 0.49386454, 53.80222)
 
 [node name="Enemigo" parent="." unique_id=1813384712 instance=ExtResource("3_lswwr")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5712953, 3.5081086, 15.594103)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -53.84751, 3.5081086, 15.594103)
