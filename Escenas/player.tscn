@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://cfl58ocq7o82v"]
 
 [ext_resource type="Script" uid="uid://xrnnxa3kge5j" path="res://Scripts/player.gd" id="1_cnkc8"]
+[ext_resource type="PackedScene" uid="uid://b7dq0oawb033g" path="res://Escenas/progresbar.tscn" id="2_i8vih"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfd6d"]
 resource_name = "Green"
@@ -2035,7 +2036,6 @@ skeleton = NodePath("..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Trex" unique_id=1636677013]
 libraries/ = SubResource("AnimationLibrary_jfgma")
-autoplay = &"Armature|TRex_Walk"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1297899553]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 3.8957386, 0)
@@ -2046,3 +2046,7 @@ transform = Transform3D(1, 0, 0, 0, 0.95541763, 0.29525784, 0, -0.29525784, 0.95
 spring_length = 3.0
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=656410890]
+
+[node name="Barra de vida" parent="." unique_id=2125339183 instance=ExtResource("2_i8vih")]
+scale = Vector2(0.4, 0.4)
+transform = Transform2D(0.4, 0, 0, 0.4, 0, 0)

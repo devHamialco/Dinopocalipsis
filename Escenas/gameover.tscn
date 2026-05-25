@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://c7pyusis1cd65"]
+
+[ext_resource type="Script" uid="uid://cqj1h42c0niyp" path="res://Scripts/instrucciones.gd" id="1_wqifn"]
+[ext_resource type="Texture2D" path="res://Recursos/panel.tres" id="2_p6qoc"]
+[ext_resource type="Texture2D" uid="uid://o1gf27cm057q" path="res://Images/titulo.png" id="3_blxkk"]
+[ext_resource type="Texture2D" uid="uid://cyfgkkusi7n4y" path="res://Images/wooden-gold-buttons-ui-game.png" id="4_x1i0t"]
+[ext_resource type="AudioStream" uid="uid://bmim70pp6ogqj" path="res://Music/click.wav" id="5_r6uel"]
+[ext_resource type="AudioStream" uid="uid://b4mtrfrbpjiv1" path="res://Music/hover.wav" id="6_hover"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m0sjc"]
+texture = ExtResource("3_blxkk")
+
+[sub_resource type="FontVariation" id="FontVariation_ydl7g"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vjkn0"]
+texture = ExtResource("4_x1i0t")
+expand_margin_top = 3.0
+expand_margin_bottom = 13.0
+region_rect = Rect2(756, 910, 545, 200)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_purel"]
+texture = ExtResource("4_x1i0t")
+expand_margin_top = 3.0
+expand_margin_bottom = 13.0
+region_rect = Rect2(98, 910, 618, 200)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c2b5r"]
+texture = ExtResource("4_x1i0t")
+expand_margin_top = 3.0
+expand_margin_bottom = 13.0
+region_rect = Rect2(756, 910, 545, 200)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4rmmp"]
+texture = ExtResource("4_x1i0t")
+expand_margin_top = 3.0
+expand_margin_bottom = 13.0
+region_rect = Rect2(98, 910, 618, 200)
+
+[node name="Gameover" type="Control" unique_id=1823370480]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wqifn")
+
+[node name="Label" type="Label" parent="." unique_id=361696067]
+top_level = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -111.0
+offset_top = 105.0
+offset_right = 143.0
+offset_bottom = 157.0
+grow_horizontal = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_m0sjc")
+
+[node name="Label2" type="Label" parent="." unique_id=2096018204]
+top_level = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.99997
+offset_top = -180.0
+offset_right = 68.0
+offset_bottom = -97.000015
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = SubResource("FontVariation_ydl7g")
+theme_override_font_sizes/font_size = 37
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=972172729]
+layout_mode = 0
+offset_left = 366.0
+offset_top = 91.0
+offset_right = 803.0
+offset_bottom = 456.0
+texture = ExtResource("2_p6qoc")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=728410871]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 447.0
+offset_top = 273.0
+offset_right = 715.0
+theme_override_constants/separation = 23
+
+[node name="Menú" type="Button" parent="VBoxContainer" unique_id=447391777]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxTexture_vjkn0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_purel")
+text = "Menú"
+
+[node name="Play" type="Button" parent="VBoxContainer" unique_id=727728917]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxTexture_c2b5r")
+theme_override_styles/hover = SubResource("StyleBoxTexture_4rmmp")
+text = "Reintentar"
+
+[node name="click" type="AudioStreamPlayer" parent="VBoxContainer" unique_id=500000002]
+stream = ExtResource("5_r6uel")
+
+[node name="hover" type="AudioStreamPlayer" parent="VBoxContainer" unique_id=500000001]
+stream = ExtResource("6_hover")
+volume_db = -20.0
+
+[connection signal="pressed" from="VBoxContainer/Menú" to="." method="_on_regresar_pressed"]
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_reintentar_pressed"]

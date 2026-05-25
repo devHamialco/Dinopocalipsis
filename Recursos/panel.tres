@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://di4ppl3y32spj"]
+
+[ext_resource type="Texture2D" uid="uid://cyfgkkusi7n4y" path="res://Images/wooden-gold-buttons-ui-game.png" id="1_7ul0s"]
+
+[resource]
+atlas = ExtResource("1_7ul0s")
+region = Rect2(951.25, 125.956, 965.25, 713.25)

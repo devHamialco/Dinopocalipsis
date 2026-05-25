@@ -13,6 +13,12 @@ expand_margin_top = 3.0
 expand_margin_bottom = 13.0
 region_rect = Rect2(756, 910, 545, 200)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wnck8"]
+texture = ExtResource("2_tlyv2")
+expand_margin_top = 3.0
+expand_margin_bottom = 13.0
+region_rect = Rect2(98, 910, 618, 200)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tlyv2"]
 texture = ExtResource("2_tlyv2")
 expand_margin_top = 3.0
@@ -63,6 +69,7 @@ grow_vertical = 2
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = SubResource("StyleBoxTexture_uv4c7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wnck8")
 theme_override_styles/hover = SubResource("StyleBoxTexture_tlyv2")
 text = "Regresar"
 
@@ -95,9 +102,10 @@ theme_override_constants/outline_size = 14
 theme_override_fonts/font = SubResource("FontVariation_wnck8")
 theme_override_font_sizes/font_size = 37
 theme_override_styles/normal = SubResource("StyleBoxTexture_ld4yd")
-text = "Usando las flechas del teclado para
+text = "Usando las teclas wasd y space para
 moverte evita los cactús y dinosaurios
-mientras consigues corazones para sobrevivir el apocalipsis ocasionado
+mientras consigues huevos para
+sobrevivir el apocalipsis ocasionado
  por el meteorito."
 horizontal_alignment = 1
 vertical_alignment = 1

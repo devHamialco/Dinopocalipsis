@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b3e51fgo5mkmn"]
+
+[ext_resource type="PackedScene" uid="uid://circ4gf8wcx8j" path="res://Escenas/huevo.tscn" id="1_le6xi"]
+
+[node name="Puntos" type="Node3D" unique_id=1160823112]
+
+[node name="Huevo" parent="." unique_id=5387703 instance=ExtResource("1_le6xi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.870914, 0, 15.290438)
+
+[node name="Huevo2" parent="." unique_id=799411021 instance=ExtResource("1_le6xi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.732161, 0, -25.569216)
+
+[node name="Huevo3" parent="." unique_id=887408574 instance=ExtResource("1_le6xi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1210976, 0, 5.1733055)
+
+[node name="Huevo4" parent="." unique_id=324721303 instance=ExtResource("1_le6xi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.472778, 0, -15.617203)
+
+[node name="Huevo5" parent="." unique_id=50579444 instance=ExtResource("1_le6xi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.767365, 0, -1.9125309)

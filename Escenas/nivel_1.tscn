@@ -2,19 +2,61 @@
 
 [ext_resource type="PackedScene" uid="uid://cxfdk60uka0sb" path="res://Escenas/escenario.tscn" id="1_os1ql"]
 [ext_resource type="PackedScene" uid="uid://cfl58ocq7o82v" path="res://Escenas/player.tscn" id="2_3c2k2"]
+[ext_resource type="PackedScene" uid="uid://b3e51fgo5mkmn" path="res://Escenas/puntos.tscn" id="2_lswwr"]
 [ext_resource type="PackedScene" uid="uid://bx2g5y1m0ewqf" path="res://Escenas/enemigo.tscn" id="3_lswwr"]
+[ext_resource type="Texture2D" uid="uid://bruiannon8ast" path="res://Images/background.png" id="6_llk6u"]
+[ext_resource type="Script" uid="uid://c0dm65d80g6ym" path="res://Scripts/nivel.gd" id="nivel_gd"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_navmesh"]
 
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_l8lnw"]
+panorama = ExtResource("6_llk6u")
+
+[sub_resource type="Sky" id="Sky_20qyh"]
+sky_material = SubResource("PanoramaSkyMaterial_l8lnw")
+
+[sub_resource type="Environment" id="Environment_rbs6h"]
+background_mode = 2
+sky = SubResource("Sky_20qyh")
+tonemap_mode = 2
+
 [node name="Nivel1" type="Node3D" unique_id=1615146761]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.388113)
+script = ExtResource("nivel_gd")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1535080965]
 navigation_mesh = SubResource("NavigationMesh_navmesh")
 
 [node name="Escenario" parent="NavigationRegion3D" unique_id=1410321552 instance=ExtResource("1_os1ql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.922325, 5.7019825, 2.046749)
+
+[node name="Puntos" parent="NavigationRegion3D/Escenario" unique_id=1160823112 instance=ExtResource("2_lswwr")]
+transform = Transform3D(-0.7998163, 0, 0.017144728, 0, 0.8, 0, -0.017144728, 0, -0.7998163, -33.46029, 1.8701153, -3.7492619)
+
+[node name="Puntos2" parent="NavigationRegion3D/Escenario" unique_id=1982049523 instance=ExtResource("2_lswwr")]
+transform = Transform3D(0.63941205, 0, -0.027425267, 0, 0.64000005, 0, 0.027425267, 0, 0.63941205, 6.6192074, 1.6461258, -6.0369663)
+
+[node name="Puntos3" parent="NavigationRegion3D/Escenario" unique_id=1643241445 instance=ExtResource("2_lswwr")]
+transform = Transform3D(0.63941205, 0, -0.027425267, 0, 0.64000005, 0, 0.027425267, 0, 0.63941205, 20.653526, 1.6461258, -6.0369663)
+
+[node name="Puntos4" parent="NavigationRegion3D/Escenario" unique_id=157651852 instance=ExtResource("2_lswwr")]
+transform = Transform3D(0.63941205, 0, -0.027425267, 0, 0.64000005, 0, 0.027425267, 0, 0.63941205, 6.6192074, 1.6461258, 21.70431)
+
+[node name="Puntos5" parent="NavigationRegion3D/Escenario" unique_id=450968171 instance=ExtResource("2_lswwr")]
+transform = Transform3D(0.63941205, 0, -0.027425267, 0, 0.64000005, 0, 0.027425267, 0, 0.63941205, -16.554798, 1.6461258, -27.106096)
 
 [node name="Player" parent="." unique_id=847262142 instance=ExtResource("2_3c2k2")]
-transform = Transform3D(0.077503294, 0, 0.06319211, 0, 0.1, 0, -0.06319211, 0, 0.077503294, 36.0636, 0.49386454, 53.80222)
+transform = Transform3D(0.002291405, 0, -0.09997377, 0, 0.10000002, 0, 0.09997377, 0, 0.002291405, -70.868965, 6.3856616, 12.762949)
 
 [node name="Enemigo" parent="." unique_id=1813384712 instance=ExtResource("3_lswwr")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -53.84751, 3.5081086, 15.594103)
+transform = Transform3D(-0.6212161, 0, 0.7836393, 0, 1, 0, -0.7836393, 0, -0.6212161, -27.702238, 9.174202, 20.570276)
+
+[node name="Enemigo2" parent="." unique_id=2088570169 instance=ExtResource("3_lswwr")]
+transform = Transform3D(-0.6212161, 0, 0.7836393, 0, 1, 0, -0.7836393, 0, -0.6212161, -27.702238, 9.174202, 2.1790752)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=601641667]
+environment = SubResource("Environment_rbs6h")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1126388261]
+transform = Transform3D(-0.19519947, -0.5511086, -0.81128085, 0.6248454, -0.7074653, 0.33024412, -0.7559534, -0.44246158, 0.48245454, 0, 317.97382, -11.388113)
+shadow_enabled = true

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b7dq0oawb033g"]
+
+[ext_resource type="Texture2D" uid="uid://cijh0rmm6scsi" path="res://Images/barra_fondo.tres" id="1_gkrfr"]
+[ext_resource type="Texture2D" uid="uid://nt2vb3t72xnn" path="res://Images/barra_relleno.tres" id="2_lesq7"]
+
+[node name="Barra de vida" type="CanvasLayer" unique_id=2125339183]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=218550310]
+offset_left = 45.0
+offset_top = 33.0
+offset_right = 140.0
+offset_bottom = 79.0
+max_value = 5.0
+value = 0.0
+texture_under = ExtResource("1_gkrfr")
+texture_progress = ExtResource("2_lesq7")

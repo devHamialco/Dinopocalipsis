@@ -3,8 +3,7 @@ extends CharacterBody3D
 var curHp: int = 3
 var maxHp: int = 3
 
-var damage: int = 1
-var attackDist: float = 1.5
+var damage: float = 1.0
 var attackRate: float = 1.0
 
 var moveSpeed: float = 4.5
@@ -13,13 +12,19 @@ var jumpVelocity: float = 5.0
 var canJump: bool = true
 var gravity: float = 15.0
 
-@onready var timer = $Timer
+@onready var attack_cooldown = $AttackCooldown
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
+@onready var attack_area: Area3D = $AttackArea
 var player: Node3D
+var can_attack: bool = true
 
 func _ready() -> void:
-	timer.wait_time = attackRate
-	timer.start()
+	attack_cooldown.wait_time = attackRate
+	attack_cooldown.one_shot = true
+	attack_cooldown.timeout.connect(_on_attack_cooldown_finished)
+	
+	attack_area.body_entered.connect(_on_attack_area_entered)
+	
 	player = get_tree().get_nodes_in_group("player")[0]
 	nav_agent.path_desired_distance = 0.5
 	nav_agent.target_desired_distance = 0.5
@@ -42,15 +47,23 @@ func _physics_process(_delta: float) -> void:
 		canJump = false
 		get_tree().create_timer(1.0).timeout.connect(func(): canJump = true)
 	
+	look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z))
 	move_and_slide()
 
+func _on_attack_area_entered(body: Node3D) -> void:
+	if body.is_in_group("player") and can_attack:
+		print("Enemigo colisiona con player! Aplicando daño: ", damage)
+		can_attack = false
+		attack_cooldown.start()
+		if body.has_method("take_damage"):
+			body.take_damage(damage)
+			print("Daño aplicado correctamente")
+		else:
+			print("ERROR: player no tiene metodo take_damage")
 
-func _on_Timer_timeout() -> void:
-	if not is_instance_valid(player):
-		return
-	var player_pos_horizontal = Vector3(player.global_position.x, global_position.y, player.global_position.z)
-	if global_transform.origin.distance_to(player_pos_horizontal) <= attackDist:
-		player.take_damage(damage)  
+func _on_attack_cooldown_finished() -> void:
+	can_attack = true
+	print("Cooldown terminado, enemigo puede atacar de nuevo")
 
 func die() -> void:
 	queue_free()

@@ -8,13 +8,21 @@ radius = 0.6142578
 height = 6.7125244
 
 [node name="Enemigo" type="CharacterBody3D" unique_id=2088570169]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 script = ExtResource("2_script")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=433922721]
 
 [node name="Pterablocktyls" parent="." unique_id=159338459 instance=ExtResource("1_ptera")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
-[node name="Timer" type="Timer" parent="." unique_id=1090132454]
+[node name="AttackCooldown" type="Timer" parent="." unique_id=1090132454]
+
+[node name="AttackArea" type="Area3D" parent="." unique_id=2000000001]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea" unique_id=2000000002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.41436768, -1.0979595)
+shape = SubResource("CapsuleShape3D_24lda")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1009005734]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.41436768, -1.0979595)

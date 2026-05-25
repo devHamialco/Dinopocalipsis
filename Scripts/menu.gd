@@ -22,7 +22,7 @@ func _play_hover_sound() -> void:
 func _on_play_pressed() -> void:
 	await click.finished
 	MusicManager.stop_music()  # Detiene la música al iniciar el juego
-	get_tree().change_scene_to_file("res://Escenas/nivel_1.tscn")
+	get_tree().change_scene_to_file("res://Escenas/niveles.tscn")
 
 func _on_instrucciones_pressed() -> void:
 	await click.finished

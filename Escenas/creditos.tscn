@@ -63,6 +63,7 @@ grow_vertical = 2
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = SubResource("StyleBoxTexture_uv4c7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wyl42")
 theme_override_styles/hover = SubResource("StyleBoxTexture_wyl42")
 text = "Regresar"
 
