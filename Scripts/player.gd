@@ -131,6 +131,17 @@ func die() -> void:
 		print("Animación de muerte completada")
 		death_animation_finished.emit()
 
+func get_head_target() -> Vector3:
+	# Devuelve la posición global del hueso Head en el esqueleto
+	var skeleton = $Trex/Armature/Skeleton3D
+	if skeleton:
+		var head_idx = skeleton.find_bone("Head")
+		if head_idx >= 0:
+			var world_pos = (skeleton.global_transform * skeleton.get_bone_global_pose(head_idx)).origin
+			return world_pos
+	# Fallback: un poco arriba del cuerpo
+	return global_position + Vector3.UP * 1.5
+
 func _update_health_bar() -> void:
 	if health_bar:
 		health_bar.value = current_health

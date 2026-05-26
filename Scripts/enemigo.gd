@@ -18,6 +18,11 @@ var gravity: float = 15.0
 var player: Node3D
 var can_attack: bool = true
 
+@export var flap_speed: float = 4.0
+@export var flap_amount: float = 0.3
+
+@onready var wing_flap_shader: Shader = preload("res://Recursos/wing_flap.gdshader")
+
 func _ready() -> void:
 	attack_cooldown.wait_time = attackRate
 	attack_cooldown.one_shot = true
@@ -28,6 +33,38 @@ func _ready() -> void:
 	player = get_tree().get_nodes_in_group("player")[0]
 	nav_agent.path_desired_distance = 0.5
 	nav_agent.target_desired_distance = 0.5
+	
+	_apply_wing_flap_shader()
+
+func _apply_wing_flap_shader() -> void:
+	for child in $Pterablocktyls.get_children():
+		if child is MeshInstance3D and child.mesh:
+			# Crear un ShaderMaterial POR CADA SURFACE (los ojos pueden estar
+			# en surfaces secundarias del mismo mesh)
+			for surface in range(child.mesh.get_surface_count()):
+				var existing = child.get_surface_override_material(surface)
+				if existing == null:
+					existing = child.mesh.surface_get_material(surface)
+				
+				var shader_mat = ShaderMaterial.new()
+				shader_mat.shader = wing_flap_shader
+				
+				if existing and existing is BaseMaterial3D:
+					var tex = existing.albedo_texture
+					if tex:
+						shader_mat.set_shader_parameter("albedo_texture", tex)
+					shader_mat.set_shader_parameter("albedo_color", existing.albedo_color)
+					shader_mat.set_shader_parameter("roughness", existing.roughness)
+					shader_mat.set_shader_parameter("metallic", existing.metallic)
+					if existing.emission_enabled:
+						shader_mat.set_shader_parameter("emission", existing.emission)
+						shader_mat.set_shader_parameter("emission_energy", existing.emission_energy_multiplier)
+				
+				# Pasar parámetros de aleteo a cada surface
+				shader_mat.set_shader_parameter("flap_speed", flap_speed)
+				shader_mat.set_shader_parameter("flap_amount", flap_amount)
+				
+				child.set_surface_override_material(surface, shader_mat)
 
 func _physics_process(_delta: float) -> void:
 	if not is_instance_valid(player):
@@ -35,7 +72,11 @@ func _physics_process(_delta: float) -> void:
 		move_and_slide()
 		return
 	
-	var direction = (player.global_position - global_position).normalized()
+	var head_pos = player.global_position
+	if player.has_method("get_head_target"):
+		head_pos = player.get_head_target()
+	
+	var direction = (head_pos - global_position).normalized()
 	direction.y = 0
 	
 	velocity.x = direction.x * moveSpeed
@@ -47,7 +88,7 @@ func _physics_process(_delta: float) -> void:
 		canJump = false
 		get_tree().create_timer(1.0).timeout.connect(func(): canJump = true)
 	
-	look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z))
+	look_at(Vector3(head_pos.x, global_position.y, head_pos.z))
 	move_and_slide()
 
 func _on_attack_area_entered(body: Node3D) -> void:
