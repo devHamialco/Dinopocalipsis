@@ -11,14 +11,18 @@ config_version=5
 [application]
 
 config/name="Dinopocalipsis"
-run/main_scene="uid://cxfdk60uka0sb"
+run/main_scene="uid://c4sb405glgqu8"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 MusicManager="*uid://15i5r2ok7xdi"
-GameManager="res://Scripts/GameManager.gd"
+GameManager="*res://Scripts/GameManager.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [input]
 

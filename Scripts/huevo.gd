@@ -1,6 +1,5 @@
 extends Area3D
 
-@warning_ignore("unused_signal")
 signal collectado(valor: int)
 
 var valor: int = 1
@@ -30,5 +29,6 @@ func _on_body_entered(body: Node3D) -> void:
 		print("Huevo colisionado! Llamando collect_egg en: ", body.name)
 		if body.has_method("collect_egg"):
 			body.collect_egg()
+		emit_signal("collectado", valor)
 		set_deferred("visible", false)
 		set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)

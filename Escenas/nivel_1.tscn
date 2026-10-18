@@ -28,22 +28,22 @@ script = ExtResource("nivel_gd")
 navigation_mesh = SubResource("NavigationMesh_navmesh")
 
 [node name="Escenario" parent="NavigationRegion3D" unique_id=1410321552 instance=ExtResource("1_os1ql")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.922325, 5.7019825, 2.046749)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.765305, 5.0816593, 2.2203827)
 
 [node name="Puntos" parent="NavigationRegion3D/Escenario" unique_id=1160823112 instance=ExtResource("2_lswwr")]
-transform = Transform3D(-0.7998163, 0, 0.017144728, 0, 0.8, 0, -0.017144728, 0, -0.7998163, -33.46029, 1.8701153, -3.7492619)
+transform = Transform3D(-0.7998163, 0, 0.017144728, 0, 0.8, 0, -0.017144728, 0, -0.7998163, -60.180984, 1.8701153, -3.7492619)
 
 [node name="Puntos2" parent="NavigationRegion3D/Escenario" unique_id=1982049523 instance=ExtResource("2_lswwr")]
-transform = Transform3D(0.63941205, 0, -0.027425267, 0, 0.64000005, 0, 0.027425267, 0, 0.63941205, 6.6192074, 1.6461258, -6.0369663)
+transform = Transform3D(0.63941205, 0, -0.027425267, 0, 0.64000005, 0, 0.027425267, 0, 0.63941205, 32.069515, 1.6461258, -6.0369663)
 
 [node name="Puntos3" parent="NavigationRegion3D/Escenario" unique_id=1643241445 instance=ExtResource("2_lswwr")]
-transform = Transform3D(0.63941205, 0, -0.027425267, 0, 0.64000005, 0, 0.027425267, 0, 0.63941205, 20.653526, 1.6461258, -6.0369663)
+transform = Transform3D(0.63941205, 0, -0.027425267, 0, 0.64000005, 0, 0.027425267, 0, 0.63941205, 20.653526, 1.6461258, 39.769012)
 
 [node name="Puntos4" parent="NavigationRegion3D/Escenario" unique_id=157651852 instance=ExtResource("2_lswwr")]
-transform = Transform3D(0.63941205, 0, -0.027425267, 0, 0.64000005, 0, 0.027425267, 0, 0.63941205, 6.6192074, 1.6461258, 21.70431)
+transform = Transform3D(0.63941205, 0, -0.027425267, 0, 0.64000005, 0, 0.027425267, 0, 0.63941205, 6.6192074, 1.6461258, -18.615854)
 
 [node name="Puntos5" parent="NavigationRegion3D/Escenario" unique_id=450968171 instance=ExtResource("2_lswwr")]
-transform = Transform3D(0.63941205, 0, -0.027425267, 0, 0.64000005, 0, 0.027425267, 0, 0.63941205, -16.554798, 1.6461258, -27.106096)
+transform = Transform3D(0.63941205, 0, -0.027425267, 0, 0.64000005, 0, 0.027425267, 0, 0.63941205, -16.554798, 1.6461258, 30.284376)
 
 [node name="Player" parent="." unique_id=847262142 instance=ExtResource("2_3c2k2")]
 transform = Transform3D(0.002291405, 0, -0.09997377, 0, 0.10000002, 0, 0.09997377, 0, 0.002291405, -70.868965, 6.3856616, 12.762949)

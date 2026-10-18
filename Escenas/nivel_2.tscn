@@ -31,28 +31,31 @@ navigation_mesh = SubResource("NavigationMesh_navmesh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.922325, 5.7019825, 2.046749)
 
 [node name="Puntos" parent="NavigationRegion3D/Escenario" unique_id=1160823112 instance=ExtResource("2_lswwr")]
-transform = Transform3D(-0.7998163, 0, 0.017144728, 0, 0.8, 0, -0.017144728, 0, -0.7998163, -33.46029, 1.8701153, -3.7492619)
+transform = Transform3D(-0.7998163, 0, 0.017144728, 0, 0.8, 0, -0.017144728, 0, -0.7998163, -25.025757, 1.8701153, 8.464819)
 
 [node name="Puntos2" parent="NavigationRegion3D/Escenario" unique_id=1982049523 instance=ExtResource("2_lswwr")]
-transform = Transform3D(0.63941205, 0, -0.027425267, 0, 0.64000005, 0, 0.027425267, 0, 0.63941205, 6.6192074, 1.6461258, -6.0369663)
+transform = Transform3D(0.63941205, 0, -0.027425267, 0, 0.64000005, 0, 0.027425267, 0, 0.63941205, 18.96498, 1.6461258, -6.0369663)
 
 [node name="Puntos3" parent="NavigationRegion3D/Escenario" unique_id=1643241445 instance=ExtResource("2_lswwr")]
-transform = Transform3D(0.63941205, 0, -0.027425267, 0, 0.64000005, 0, 0.027425267, 0, 0.63941205, 20.653526, 1.6461258, -6.0369663)
+transform = Transform3D(0.63941205, 0, -0.027425267, 0, 0.64000005, 0, 0.027425267, 0, 0.63941205, -51.132683, 1.6461258, -27.59579)
 
 [node name="Puntos4" parent="NavigationRegion3D/Escenario" unique_id=157651852 instance=ExtResource("2_lswwr")]
-transform = Transform3D(0.63941205, 0, -0.027425267, 0, 0.64000005, 0, 0.027425267, 0, 0.63941205, 6.6192074, 1.6461258, 21.70431)
+transform = Transform3D(0.63941205, 0, -0.027425267, 0, 0.64000005, 0, 0.027425267, 0, 0.63941205, 29.441122, 1.6461258, 49.12082)
 
 [node name="Puntos5" parent="NavigationRegion3D/Escenario" unique_id=450968171 instance=ExtResource("2_lswwr")]
-transform = Transform3D(0.63941205, 0, -0.027425267, 0, 0.64000005, 0, 0.027425267, 0, 0.63941205, -16.554798, 1.6461258, -27.106096)
+transform = Transform3D(0.63941205, 0, -0.027425267, 0, 0.64000005, 0, 0.027425267, 0, 0.63941205, -16.554798, 1.6461258, -28.952347)
 
 [node name="Player" parent="." unique_id=847262142 instance=ExtResource("2_3c2k2")]
-transform = Transform3D(0.002291405, 0, -0.09997377, 0, 0.10000002, 0, 0.09997377, 0, 0.002291405, -70.868965, 6.3856616, 12.762949)
+transform = Transform3D(0.002291405, 0, -0.09997377, 0, 0.10000002, 0, 0.09997377, 0, 0.002291405, -84.43904, 6.3856616, 12.762949)
 
 [node name="Enemigo" parent="." unique_id=1813384712 instance=ExtResource("3_lswwr")]
-transform = Transform3D(-0.6212161, 0, 0.7836393, 0, 1, 0, -0.7836393, 0, -0.6212161, -27.702238, 9.174202, 20.570276)
+transform = Transform3D(-0.6212161, 0, 0.7836393, 0, 1, 0, -0.7836393, 0, -0.6212161, -27.702238, 9.174202, 11.153551)
 
 [node name="Enemigo2" parent="." unique_id=2088570169 instance=ExtResource("3_lswwr")]
-transform = Transform3D(-0.6212161, 0, 0.7836393, 0, 1, 0, -0.7836393, 0, -0.6212161, -27.702238, 9.174202, 2.1790752)
+transform = Transform3D(-0.6212161, 0, 0.7836393, 0, 1, 0, -0.7836393, 0, -0.6212161, -27.702238, 9.174202, -36.53103)
+
+[node name="Enemigo3" parent="." unique_id=1424101218 instance=ExtResource("3_lswwr")]
+transform = Transform3D(-0.6212161, 0, 0.7836393, 0, 1, 0, -0.7836393, 0, -0.6212161, -27.702238, 9.174202, 49.167534)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=546168328]
 environment = SubResource("Environment_udchn")

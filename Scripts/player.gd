@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 signal player_died(health: float)
 signal death_animation_finished()
+signal victory()
 
 const SPEED = 8
 const JUMP_VELOCITY = 4.5
@@ -30,24 +31,24 @@ func _ready() -> void:
 	current_health = 0.0
 	is_alive = true
 	has_had_health = false
-	
+
 	# Find health bar from instanced progresbar scene
 	var canvas = get_node_or_null("Barra de vida")
 	if canvas:
 		health_bar = canvas.find_child("TextureProgressBar", true, false)
 	_update_health_bar()
-	
+
 func _input(event: InputEvent) -> void:
 	if not is_alive:
 		return
-		
+
 	# Capturar el movimiento del mouse
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
 		spring_arm.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
 		spring_arm.rotation.x = clamp(spring_arm.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	# Liberar/capturar el mouse con ESC
 	if Input.is_action_just_pressed("ui_cancel"):
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -55,12 +56,18 @@ func _process(_delta: float) -> void:
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
+	# Joystick derecho: rotación horizontal continua (solo en niveles)
+	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and Input.get_connected_joypads().size() > 0:
+		var right_x = Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)
+		if abs(right_x) > 0.15:
+			rotate_y(-right_x * MOUSE_SENSITIVITY * 12.0)
+
 func _physics_process(delta: float) -> void:
 	if not is_alive:
 		velocity = Vector3.ZERO
 		move_and_slide()
 		return
-		
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -72,7 +79,7 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	
+
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
@@ -88,7 +95,7 @@ func _physics_process(delta: float) -> void:
 func collect_egg() -> void:
 	if not is_alive:
 		return
-		
+
 	huevos_collected += 1
 	print("Egg collected! Total: ", huevos_collected, " Health: ", current_health)
 	if huevos_collected % 5 == 0:
@@ -97,15 +104,19 @@ func collect_egg() -> void:
 		print("Health increased to: ", current_health)
 		_update_health_bar()
 
+	# Victória si se recolectaron todos los 25 huevos
+	if huevos_collected >= 25:
+		victory.emit()
+
 func take_damage(amount: float) -> void:
 	if not is_alive:
 		return
-		
+
 	print("Player recibe daño! Amount: ", amount, " Health before: ", current_health)
 	current_health = max(current_health - amount, 0.0)
 	print("Health after damage: ", current_health)
 	_update_health_bar()
-	
+
 	# Verificar si murió (solo si ya había tenido vida antes)
 	if current_health <= 0.0 and has_had_health:
 		die()
@@ -113,16 +124,16 @@ func take_damage(amount: float) -> void:
 func die() -> void:
 	if not is_alive:
 		return
-		
+
 	is_alive = false
 	player_died.emit(current_health)
 	print("PLAYER HA MUERTO - Reproduciendo animación de muerte")
-	
+
 	# Desactivar controles
 	set_process_input(false)
 	set_physics_process(false)
 	set_process(false)
-	
+
 	# Reproducir animación de muerte
 	if anim_player:
 		anim_player.play("Armature|TRex_Death")
@@ -141,6 +152,17 @@ func get_head_target() -> Vector3:
 			return world_pos
 	# Fallback: un poco arriba del cuerpo
 	return global_position + Vector3.UP * 1.5
+
+func get_tail_target() -> Vector3:
+	# Devuelve la posición global del hueso Tail5 (punta de la cola)
+	var skeleton = $Trex/Armature/Skeleton3D
+	if skeleton:
+		var tail_idx = skeleton.find_bone("Tail5")
+		if tail_idx >= 0:
+			var world_pos = (skeleton.global_transform * skeleton.get_bone_global_pose(tail_idx)).origin
+			return world_pos
+	# Fallback: detrás del T-Rex
+	return global_position + transform.basis.z * 2.0
 
 func _update_health_bar() -> void:
 	if health_bar:
