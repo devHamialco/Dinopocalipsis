@@ -1,6 +1,10 @@
 extends HBoxContainer
 
 func _ready() -> void:
+	# Esperar un frame para que GameManager tenga el rating actualizado
+	call_deferred("_update_rating")
+
+func _update_rating() -> void:
 	var game_manager = get_node_or_null("/root/GameManager")
 	if not game_manager:
 		return
